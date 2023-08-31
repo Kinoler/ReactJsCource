@@ -1,0 +1,55 @@
+.div-genreSelect {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+  }
+  
+  .div-genreSelect p {
+    margin: 0;
+    margin-right: 10px;
+  }
+  
+  select {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    outline: none;
+    background-color: #f4f4f4;
+    transition: box-shadow 0.3s ease;
+    position: relative;
+    overflow-x: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100px;
+  }
+  
+  select::after {
+    content: '\25BC';
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    font-size: 18px;
+  }
+
+  select option {
+    background-color: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+  }
+  
+  .div-genreSelect select option:hover {
+    background-color: #161717;
+    color: #fff;
+  }
+
+  .div-genreSelect select option:last-child {
+    border-radius: 0 0 20px 20px;
+  }
