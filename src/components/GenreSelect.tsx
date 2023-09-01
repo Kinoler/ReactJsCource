@@ -12,21 +12,26 @@ interface GenreSelectProps {
 function GenreSelect(props: GenreSelectProps) {
     const [selectedGenre, setSelectedGenre] = useState<string>(props.selectedMovieName);
 
-    const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        setSelectedGenre(e.target.value);
+    const handleChange = (movieName: string) => {
+        setSelectedGenre(movieName);
         props.onSelect(selectedGenre);
     };
 
   return (
     <div className="div-genreSelect">
       <p>GenreSelect: </p>
-      <select value={selectedGenre} onChange={handleChange}>
+      <ul>
         {props.movieList.map(movieName => {
             return (
-                <option value={movieName} key={movieName}>{movieName}</option>
+                <li value={movieName} 
+                    key={movieName} 
+                    className={selectedGenre === movieName ? 'li-selected' : ''} 
+                    onClick={() => handleChange(movieName)}>
+                    {movieName}
+                </li>
             );
         })}
-      </select>
+      </ul>
     </div>
   );
 };
