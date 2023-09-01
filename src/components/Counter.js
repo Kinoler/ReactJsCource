@@ -1,6 +1,6 @@
 import './Counter.css';
 
-const React = require('react');
+import React from 'react';
 
 class Counter extends React.Component {
   constructor(props) {
@@ -33,5 +33,6 @@ class Counter extends React.Component {
     }));
   }
 }
+
 
 export default Counter;

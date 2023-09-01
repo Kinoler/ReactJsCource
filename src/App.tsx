@@ -9,8 +9,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Counter startValue={0} />
-        <SearchForm initialSearch='' onSearch={() => null}/>
-        <GenreSelect movieList={["Fantastic", "Horror", "Advanture"]} selectedMovieName='Advanture' onSelect={() => null} />
+        <SearchForm initialSearch="None" onSearch={(val) => console.log(val)}/>
+        <GenreSelect movieList={["Fantastic", "Horror", "Advanture"]} selectedMovieName='Advanture' onSelect={(val) => console.log(val)} />
       </header>
     </div>
   );
