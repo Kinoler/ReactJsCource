@@ -21,6 +21,7 @@ test('After typing to the input and a "click" event on the Submit button, the "o
     fireEvent.keyPress(searchInput, { key: keyClicked, code: `Key${keyClicked}`});
 
     const updatedSearchValue = `${initialSearch}${keyClicked}`;
+    fireEvent.change(searchInput, { target: { value: updatedSearchValue} });
     await waitFor(() => {
       const searchInputq = screen.getByDisplayValue(updatedSearchValue);
       expect(searchInputq).toBeInTheDocument();
@@ -40,14 +41,14 @@ test('After typing to the input and pressing Enter key, the "onChange" prop is c
 
     const searchInput = screen.getByDisplayValue(initialSearch);
     fireEvent.keyPress(searchInput, { key: keyClicked, code: `Key${keyClicked}`});
-
     const updatedSearchValue = `${initialSearch}${keyClicked}`;
+    fireEvent.change(searchInput, { target: { value: updatedSearchValue} });
     await waitFor(() => {
       const searchInputq = screen.getByDisplayValue(updatedSearchValue);
       expect(searchInputq).toBeInTheDocument();
     });
 
-    fireEvent.keyPress(searchInput, { key: 'Enter', code: 'Enter', charCode: 13 });
+    fireEvent.keyUp(searchInput, { key: 'Enter', code: 'Enter', charCode: 13 });
     await waitFor(() => {
         expect(onSearch).toBeCalledWith(updatedSearchValue); 
     });
