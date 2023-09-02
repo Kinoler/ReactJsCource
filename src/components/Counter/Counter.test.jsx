@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import Counter from './Counter';
+import Counter from './Counter/Counter';
 
 test('Component renders initial value provided in props', () => {
     var initValue = 5;
