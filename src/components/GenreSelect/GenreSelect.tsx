@@ -11,8 +11,10 @@ function GenreSelect({selectedMovieName, onSelect, movieList}: GenreSelectProps)
     const [selectedGenre, setSelectedGenre] = useState<string>(selectedMovieName);
 
     const handleChange = (movieName: string) => {
+      if (selectedGenre !== movieName) {
         setSelectedGenre(movieName);
         onSelect && onSelect(movieName);
+      }
     };
 
   return (

@@ -6,11 +6,13 @@ interface SortControlProps {
 }
 
 function SortControl({ onSelect }: SortControlProps) {
-    const [selectedGenre, setSelectedGenre] = useState<string>('');
+    const [selectedSortBy, setSelectedSortBy] = useState<string>('');
 
     const handleChange = (sortByItem: string) => {
-        setSelectedGenre(sortByItem);
-        onSelect && onSelect(sortByItem);
+        if (selectedSortBy !== sortByItem) {
+            setSelectedSortBy(sortByItem);
+            onSelect && onSelect(sortByItem);
+        }
     };
 
     const SortByList = ["Release Date", "Title"];
@@ -23,7 +25,7 @@ function SortControl({ onSelect }: SortControlProps) {
                 return (
                     <li value={sortByItem} 
                         key={sortByItem} 
-                        className={selectedGenre === sortByItem ? 'li-selected' : ''} 
+                        className={selectedSortBy === sortByItem ? 'li-selected' : ''} 
                         onClick={() => handleChange(sortByItem)}>
                         {sortByItem}
                     </li>
