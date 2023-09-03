@@ -1,0 +1,87 @@
+.div-MovieTile-General {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .div-MovieTile-Select {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-grow: 1;
+  }
+
+  .div-MovieTile-imageContainer {
+    width: 300px;
+    height: 450px;
+  }
+
+  .div-MovieTile-Select img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+  
+  .div-NameYear {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .div-NameYear p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .p-Year {
+    text-align: right; 
+    font-size: 14px;
+    font-weight: normal;
+  }
+  
+  .div-MovieTile-Select p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .div-MovieTile-dots {
+    position: absolute;
+    top: 20px;
+    left: 75%;
+    width: 60px;
+    height: 60px;
+    object-fit: fill;
+  }
+  
+  .div-MovieTile-context-menu {
+    position: absolute;
+    top: 60px;
+    right: 75px;
+    background-color: #43434394;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .div-MovieTile-context-menu button {
+    display: block;
+    width: 80px;
+    padding: 10px;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .div-MovieTile-context-menu button:hover {
+    background-color: #020101;
+  }
+  
