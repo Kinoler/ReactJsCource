@@ -10,14 +10,14 @@
     margin-right: 10px;
   }
   
-  ul {
+  .div-genreSelect ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
   }
   
-  li {
+  .div-genreSelect li {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
@@ -26,11 +26,11 @@
     margin-right: 10px;
   }
 
-  .li-selected {
+  .div-genreSelect .li-selected {
     background-color: #007bff;
     color: #fff;
   }
 
-  li:hover {
+  .div-genreSelect li:hover {
     background-color: #1657c6;
   }

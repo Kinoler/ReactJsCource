@@ -12,14 +12,14 @@ function GenreSelect({selectedMovieName, onSelect, movieList}: GenreSelectProps)
 
     const handleChange = (movieName: string) => {
         setSelectedGenre(movieName);
-        onSelect(movieName);
+        onSelect && onSelect(movieName);
     };
 
   return (
     <div className="div-genreSelect">
       <p>GenreSelect: </p>
       <ul>
-        {movieList.map(movieName => {
+        {movieList?.map(movieName => {
             return (
                 <li value={movieName} 
                     key={movieName} 
