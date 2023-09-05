@@ -1,3 +1,4 @@
+import Dropdown from '../Dropdown/Dropdown';
 import './SortControl.css';
 import { useState } from 'react';
 
@@ -17,18 +18,7 @@ function SortControl({ sortByList, selectedSortBy, onSelect}: SortControlProps) 
     return (
         <div className="div-SortControl">
         <p>Sort by: </p>
-        <ul>
-            {sortByList?.map(sortByItem => {
-                return (
-                    <li value={sortByItem} 
-                        key={sortByItem} 
-                        className={selectedSortBy === sortByItem ? 'li-selected' : ''} 
-                        onClick={() => handleChange(sortByItem)}>
-                        {sortByItem}
-                    </li>
-                );
-            })}
-        </ul>
+        <Dropdown options={sortByList} initialOption={selectedSortBy} onChange={(newValue) => handleChange(newValue)} />
         </div>
     );
 };

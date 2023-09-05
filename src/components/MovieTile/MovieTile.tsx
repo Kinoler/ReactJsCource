@@ -1,7 +1,7 @@
 import './MovieTile.css';
 import MovieDetailsModel from '../../models/MovieDetailsModel';
 import DotsIcon from './../../resources/DotsIcon.png';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface MovieTileProps {
   movieModel: MovieDetailsModel;
@@ -12,9 +12,24 @@ interface MovieTileProps {
 
 function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteClickCallback }: MovieTileProps) {
     const [isContextMenuOpen, setContextMenuOpen] = useState(false);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    
+    const onClickOutside = (event: MouseEvent) => {
+        if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+            setContextMenuOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener('click', onClickOutside);
+
+        return () => {
+            document.removeEventListener('click', onClickOutside);
+        };
+    }, []);
 
     const toggleContextMenu = () => {
-        setContextMenuOpen(!isContextMenuOpen);
+        setContextMenuOpen((prevState) => !prevState);
     };
         
     const onClick = () => {
@@ -28,11 +43,12 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
     const handleDeleteClick = () => {
         onDeleteClickCallback && onDeleteClickCallback(movieModel);
     };
+    
     return (
         <div className="div-MovieTile-General">
             <div onClick={onClick} className="div-MovieTile-Select">
                 <div className="div-MovieTile-imageContainer">
-                    <img src={movieModel?.ImageUrl} alt='Load error'/>
+                    <img src={movieModel?.ImageUrl} alt='Movie poster'/>
                 </div>
                 <div className="div-NameYear">
                     <p className='p-NameYear-Name'>{movieModel?.MovieName}</p>
@@ -42,7 +58,7 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
             </div>
             <img src={DotsIcon} alt='Dots' className='div-MovieTile-dots' onClick={toggleContextMenu} />
             {isContextMenuOpen && (
-                <div className="div-MovieTile-context-menu">
+                <div className="div-MovieTile-context-menu" ref={containerRef}>
                     <button onClick={handleEditClick}>Edit</button>
                     <button onClick={handleDeleteClick}>Delete</button>
                 </div>
