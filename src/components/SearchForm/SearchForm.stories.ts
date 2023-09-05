@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SearchForm from './SearchForm';
 
 const meta = {
-  title: 'SearchForm',
+  title: 'Module 1/SearchForm',
   component: SearchForm,
   parameters: {
     layout: 'centered',

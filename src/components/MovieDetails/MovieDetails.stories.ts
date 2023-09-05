@@ -4,7 +4,7 @@ import MovieDetails from './MovieDetails';
 import MovieDetailsModel from '../../models/MovieDetailsModel';
 
 const meta = {
-  title: 'MovieDetails',
+  title: 'Module 3/MovieDetails',
   component: MovieDetails,
   parameters: {
     layout: 'centered',

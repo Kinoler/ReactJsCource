@@ -1,4 +1,4 @@
-class MovieModel {
+class MovieTileModel {
     constructor(
         public ImageUrl: string,
         public MovieName: string,
@@ -7,4 +7,4 @@ class MovieModel {
     ) {}
 }
 
-export default MovieModel;
+export default MovieTileModel;

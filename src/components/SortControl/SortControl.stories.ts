@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import SortControl from './SortControl';
 
 const meta = {
-  title: 'SortControl',
+  title: 'Module 3/SortControl',
   component: SortControl,
   parameters: {
     layout: 'centered',

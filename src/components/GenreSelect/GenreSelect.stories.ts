@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import GenreSelect from './GenreSelect';
 
 const meta = {
-  title: 'GenreSelect',
+  title: 'Module 1/GenreSelect',
   component: GenreSelect,
   parameters: {
     layout: 'centered',

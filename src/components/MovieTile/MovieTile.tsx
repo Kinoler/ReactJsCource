@@ -1,10 +1,10 @@
 import './MovieTile.css';
-import MovieModel from './../../models/MovieModel';
+import MovieTileModel from '../../models/MovieTileModel';
 import DotsIcon from './../../resources/DotsIcon.png';
 import { useState } from 'react';
 
 interface MovieTileProps {
-  movieModel: MovieModel;
+  movieModel: MovieTileModel;
   onClickCallback: (movieName: string) => void;
   onEditClickCallback: (movieName: string) => void;
   onDeleteClickCallback: (movieName: string) => void;

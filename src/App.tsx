@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import './styles.css';
 import Counter from './components/Counter/Counter';
 import SearchForm from './components/SearchForm/SearchForm';
 import GenreSelect from './components/GenreSelect/GenreSelect';
@@ -7,7 +8,7 @@ import MovieTile from './components/MovieTile/MovieTile';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import SortControl from './components/SortControl/SortControl';
 
-import MovieModel from './models/MovieModel';
+import MovieModel from './models/MovieTileModel';
 import MovieDetailsModel from './models/MovieDetailsModel';
 
   function App() {

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import MovieModel from './../../models/MovieModel';
+import MovieTileModel from '../../models/MovieTileModel';
 import MovieTile from './MovieTile';
 
 const meta = {
-  title: 'MovieTile',
+  title: 'Module 3/MovieTile',
   component: MovieTile,
   parameters: {
     layout: 'centered',
@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    movieModel: new MovieModel(
+    movieModel: new MovieTileModel(
         "https://images4.alphacoders.com/909/thumb-1920-909185.jpg", 
         'Avengers: War of Infinity', 
         2004, ['Drama', 
