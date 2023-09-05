@@ -7,9 +7,11 @@ import GenreSelect from './components/GenreSelect/GenreSelect';
 import MovieTile from './components/MovieTile/MovieTile';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import SortControl from './components/SortControl/SortControl';
+import MovieForm from './components/MovieForm/MovieForm';
 
 import MovieModel from './models/MovieTileModel';
 import MovieDetailsModel from './models/MovieDetailsModel';
+import MovieEditModel from './models/MovieEditModel';
 
   function App() {
     return (
@@ -39,6 +41,18 @@ import MovieDetailsModel from './models/MovieDetailsModel';
               5.6,
               new Date(new Date().setHours(4, 16, 43)),
               "Jules Winnfield (Samuel L. Jackson) and Vincent Vega (John Travolta) are two hit men who are out to retrieve a suitcase stolen from their employer, mob boss Marsellus Wallace (Ving Rhames). Wallace has also asked Vincent to take his wife Mia (Uma Thurman) out a few days later when Wallace himself will be out of town. Butch Coolidge (Bruce Willis) is an aging boxer who is paid by Wallace to lose his fight. The lives Of these seer-ningly unrelated people are vvoven together comprising of a series of funny, bizarre and uncalled-for incidents.—Soumitra")}
+          />
+          MovieForm:
+          <MovieForm movieEditModel={new MovieEditModel(
+                "Movie Title",
+                "https://example.com/movie",
+                "Action",
+                "Movie overview text",
+                "2023-08-31",
+                8.5,
+                "2h 15min"
+            )}
+            onSubmit = {(val) => console.log(val)}
           />
         </header>
       </div>
