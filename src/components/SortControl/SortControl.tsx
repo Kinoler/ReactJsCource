@@ -3,25 +3,22 @@ import { useState } from 'react';
 
 interface SortControlProps {
   onSelect: (sortByItem: string) => void;
+  selectedSortBy: string,  
+  sortByList: string[]
 }
 
-function SortControl({ onSelect }: SortControlProps) {
-    const [selectedSortBy, setSelectedSortBy] = useState<string>('');
-
+function SortControl({ sortByList, selectedSortBy, onSelect}: SortControlProps) {
     const handleChange = (sortByItem: string) => {
         if (selectedSortBy !== sortByItem) {
-            setSelectedSortBy(sortByItem);
             onSelect && onSelect(sortByItem);
         }
     };
-
-    const SortByList = ["Release Date", "Title"];
 
     return (
         <div className="div-SortControl">
         <p>Sort by: </p>
         <ul>
-            {SortByList?.map(sortByItem => {
+            {sortByList?.map(sortByItem => {
                 return (
                     <li value={sortByItem} 
                         key={sortByItem} 

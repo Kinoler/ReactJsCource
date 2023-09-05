@@ -2,7 +2,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 20px;
   }
   
   .div-genreSelect p {
@@ -10,27 +9,6 @@
     margin-right: 10px;
   }
   
-  .div-genreSelect ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
   .div-genreSelect li {
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-    margin-right: 10px;
-  }
-
-  .div-genreSelect .li-selected {
-    background-color: #007bff;
-    color: #fff;
-  }
-
-  .div-genreSelect li:hover {
-    background-color: #1657c6;
+    font-size: 12px;
   }

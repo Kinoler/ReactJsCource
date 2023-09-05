@@ -6,6 +6,7 @@ class MovieDetailsModel {
         public Rating: number,
         public Duration: Date,
         public Description: string,
+        public Genres: string[]
     ) {}
   }
 

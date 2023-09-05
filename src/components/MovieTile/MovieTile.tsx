@@ -1,13 +1,13 @@
 import './MovieTile.css';
-import MovieTileModel from '../../models/MovieTileModel';
+import MovieDetailsModel from '../../models/MovieDetailsModel';
 import DotsIcon from './../../resources/DotsIcon.png';
 import { useState } from 'react';
 
 interface MovieTileProps {
-  movieModel: MovieTileModel;
-  onClickCallback: (movieName: string) => void;
-  onEditClickCallback: (movieName: string) => void;
-  onDeleteClickCallback: (movieName: string) => void;
+  movieModel: MovieDetailsModel;
+  onClickCallback: (movieName: MovieDetailsModel) => void;
+  onEditClickCallback: (movieName: MovieDetailsModel) => void;
+  onDeleteClickCallback: (movieName: MovieDetailsModel) => void;
 }
 
 function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteClickCallback }: MovieTileProps) {
@@ -18,15 +18,15 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
     };
         
     const onClick = () => {
-        onClickCallback && onClickCallback(movieModel?.MovieName);
+        onClickCallback && onClickCallback(movieModel);
     };
 
     const handleEditClick = () => {
-        onEditClickCallback && onEditClickCallback(movieModel?.MovieName);
+        onEditClickCallback && onEditClickCallback(movieModel);
     };
 
     const handleDeleteClick = () => {
-        onDeleteClickCallback && onDeleteClickCallback(movieModel?.MovieName);
+        onDeleteClickCallback && onDeleteClickCallback(movieModel);
     };
     return (
         <div className="div-MovieTile-General">
@@ -35,10 +35,10 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
                     <img src={movieModel?.ImageUrl} alt='Load error'/>
                 </div>
                 <div className="div-NameYear">
-                    <p>{movieModel?.MovieName}</p>
-                    <p className="p-Year">{movieModel?.ReleaseYear}</p>
+                    <p className='p-NameYear-Name'>{movieModel?.MovieName}</p>
+                    <p className="p-NameYear-Year">{movieModel?.ReleaseYear}</p>
                 </div>
-                <p>{movieModel?.Genres?.join(', ')}</p>
+                <p className="p-genres">{movieModel?.Genres?.join(', ')}</p>
             </div>
             <img src={DotsIcon} alt='Dots' className='div-MovieTile-dots' onClick={toggleContextMenu} />
             {isContextMenuOpen && (

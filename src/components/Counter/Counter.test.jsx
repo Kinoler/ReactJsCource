@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import Counter from './Counter';
 
 test('Component renders initial value provided in props', () => {
-    var initValue = 5;
+    const initValue = 5;
     render(<Counter startValue={initValue} />);
     const counterText = screen.getByText(`${initValue}`);
     
@@ -10,7 +10,7 @@ test('Component renders initial value provided in props', () => {
 });
 
 test('Click event on "decrement" button decrements the displayed value', () => {
-    var initValue = 5;
+    const initValue = 5;
     render(<Counter startValue={initValue} />);
     const counterText = screen.getByText(`${initValue}`);
   
@@ -20,7 +20,7 @@ test('Click event on "decrement" button decrements the displayed value', () => {
   });
 
 test('Click event on "increment" button increments the displayed value', () => {
-    var initValue = 5;
+  const initValue = 5;
     render(<Counter startValue={initValue} />);
     const counterText = screen.getByText(`${initValue}`);
   

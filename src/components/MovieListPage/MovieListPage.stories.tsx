@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import './../../styles.css';
-import Counter from './Counter';
+import MovieListPage from './MovieListPage';
 
 const meta = {
-  title: 'Module 1/Counter',
-  component: Counter,
+  title: 'Module 5/MovieListPage',
+  component: MovieListPage,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof Counter>;
+} satisfies Meta<typeof MovieListPage>;
 
 export default meta;
 
@@ -18,6 +18,5 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    startValue: 5
   },
 };

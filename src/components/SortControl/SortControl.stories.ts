@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import './../../styles.css';
 import SortControl from './SortControl';
 
 const meta = {
@@ -17,6 +18,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    sortByList: ["Fantastic", "Horror", "Advanture"],
+    selectedSortBy: 'Advanture',
     onSelect: (val) => console.log(val)
   },
 };

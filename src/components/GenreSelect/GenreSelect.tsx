@@ -2,32 +2,29 @@ import './GenreSelect.css';
 import { useState } from 'react';
 
 interface GenreSelectProps {
-  movieList: string[];
-  selectedMovieName: string;
+  genreList: string[];
+  selectedGenre: string;
   onSelect: (genre: string) => void;
 }
 
-function GenreSelect({selectedMovieName, onSelect, movieList}: GenreSelectProps) {
-    const [selectedGenre, setSelectedGenre] = useState<string>(selectedMovieName);
+function GenreSelect({selectedGenre, genreList, onSelect}: GenreSelectProps) {
 
     const handleChange = (movieName: string) => {
       if (selectedGenre !== movieName) {
-        setSelectedGenre(movieName);
         onSelect && onSelect(movieName);
       }
     };
 
   return (
     <div className="div-genreSelect">
-      <p>GenreSelect: </p>
       <ul>
-        {movieList?.map(movieName => {
+        {genreList?.map(genreName => {
             return (
-                <li value={movieName} 
-                    key={movieName} 
-                    className={selectedGenre === movieName ? 'li-selected' : ''} 
-                    onClick={() => handleChange(movieName)}>
-                    {movieName}
+                <li value={genreName} 
+                    key={genreName} 
+                    className={selectedGenre === genreName ? 'li-selected' : ''} 
+                    onClick={() => handleChange(genreName)}>
+                    {genreName}
                 </li>
             );
         })}
