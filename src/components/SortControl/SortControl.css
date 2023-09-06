@@ -1,36 +1,36 @@
-.div-genreSelect {
+.div-SortControl {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px;
+    background-color: #232323;
   }
   
-  .div-genreSelect p {
+  .div-SortControl p {
     margin: 0;
     margin-right: 10px;
   }
   
-  .div-genreSelect ul {
+  .div-SortControl ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
   }
   
-  .div-genreSelect li {
+  .div-SortControl li {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s ease;
     margin-right: 10px;
   }
 
-  .div-genreSelect .li-selected {
+  .div-SortControl .li-selected {
     background-color: #007bff;
     color: #fff;
   }
 
-  .div-genreSelect li:hover {
+  .div-SortControl li:hover {
     background-color: #1657c6;
   }

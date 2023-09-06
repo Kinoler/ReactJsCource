@@ -11,15 +11,17 @@ function GenreSelect({selectedMovieName, onSelect, movieList}: GenreSelectProps)
     const [selectedGenre, setSelectedGenre] = useState<string>(selectedMovieName);
 
     const handleChange = (movieName: string) => {
+      if (selectedGenre !== movieName) {
         setSelectedGenre(movieName);
-        onSelect(movieName);
+        onSelect && onSelect(movieName);
+      }
     };
 
   return (
     <div className="div-genreSelect">
       <p>GenreSelect: </p>
       <ul>
-        {movieList.map(movieName => {
+        {movieList?.map(movieName => {
             return (
                 <li value={movieName} 
                     key={movieName} 

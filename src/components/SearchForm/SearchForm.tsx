@@ -6,16 +6,16 @@ interface SearchFormProps {
   initialSearch: string;
 }
 
-function SearchForm(props: SearchFormProps) {
-  const [search, setSearch] = useState<string>(props.initialSearch);
+function SearchForm({initialSearch, onSearch }: SearchFormProps) {
+  const [search, setSearch] = useState<string>(initialSearch);
 
-  const onSearch = () => {
-    props.onSearch(search);
+  const onSearchClick = () => {
+    onSearch && onSearch(search);
   };
 
   const handleKeyPress = (event: React.KeyboardEvent) => {
     if (event.key === 'Enter') {
-      props.onSearch(search);
+      onSearchClick();
     }
   };
 
@@ -29,7 +29,7 @@ function SearchForm(props: SearchFormProps) {
         onKeyUp={handleKeyPress}
         placeholder="Введите текст"
       />
-      <button onClick={onSearch}>Search</button>
+      <button onClick={onSearchClick}>Search</button>
     </div>
   );
 };
