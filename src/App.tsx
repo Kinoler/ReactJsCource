@@ -7,6 +7,10 @@ import GenreSelect from './components/GenreSelect/GenreSelect';
 import MovieTile from './components/MovieTile/MovieTile';
 import MovieDetails from './components/MovieDetails/MovieDetails';
 import SortControl from './components/SortControl/SortControl';
+import MovieForm from './components/MovieForm/MovieForm';
+
+import MovieDetailsModel from './models/MovieDetailsModel';
+import MovieEditModel from './models/MovieEditModel';
 
 const mockData = [{
   ImageUrl: "https://images4.alphacoders.com/909/thumb-1920-909185.jpg", 

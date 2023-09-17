@@ -1,0 +1,54 @@
+.MovieForm {
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    text-align: left;
+  }
+  
+  .MovieForm-general {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .MovieForm-first-column {
+    width: 55%;
+  }
+  
+  .MovieForm-second-column {
+    width: 40%;
+  }
+  
+  .MovieForm-prop {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  .MovieForm-prop label {
+    color: red; 
+    margin-bottom: 5px; 
+  }
+  
+  .MovieForm-Overview {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .MovieForm-Overview textarea {
+    resize: vertical; 
+  }
+
+  .MovieForm-Submit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+
+  .MovieForm-Reset {
+    margin-right: 10px;
+  }
+  

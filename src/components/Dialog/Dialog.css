@@ -1,0 +1,49 @@
+/* Dialog.css */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Убедитесь, что модальное окно находится выше других элементов */
+  }
+  
+.modal-wrap {
+    background-color: #232323;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333; /* Цвет фона заголовка */
+    color: white; /* Цвет текста заголовка */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .modal-title {
+    font-size: 25px;
+    margin: 0;
+  }
+  
+  .closeButton {
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white; /* Цвет кнопки закрытия */
+    padding: 5px;
+  }
+  
+  .modal-content {
+    margin: 20px;
+  }

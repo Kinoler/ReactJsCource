@@ -21,7 +21,7 @@ test('Component renders with movie details', () => {
   expect(screen.getByText(mockMovieModel.MovieName)).toBeInTheDocument();
   expect(screen.getByText(mockMovieModel.ReleaseYear.toString())).toBeInTheDocument();
   expect(screen.getByText(mockMovieModel.Genres.join(', '))).toBeInTheDocument();
-  expect(screen.getByAltText('Load error')).toBeInTheDocument();
+  expect(screen.getByAltText('Movie poster')).toBeInTheDocument();
 });
 
 test('Clicking on the movie triggers the onClickCallback', () => {
