@@ -45,7 +45,9 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
     };
     
     return (
-        <div className="div-MovieTile-General">
+        movieModel ? (
+            <div className="div-MovieTile-General">
+
             <div onClick={onClick} className="div-MovieTile-Select">
                 <div className="div-MovieTile-imageContainer">
                     <img src={movieModel?.ImageUrl} alt='Movie poster'/>
@@ -64,7 +66,10 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
                 </div>
             )}
 
-        </div>
+            </div>
+        ) : (
+            <div />
+        )
     );
 };
 

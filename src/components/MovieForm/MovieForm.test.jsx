@@ -22,7 +22,8 @@ describe('MovieForm', () => {
     expect(screen.getByLabelText(/Rating:/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Runtime:/i)).toBeInTheDocument();
     expect(screen.getByLabelText(/Overview:/i)).toBeInTheDocument();
-    expect(screen.getByText(/Submit/)).toBeInTheDocument();
+
+    expect(screen.getByText(/Add/)).toBeInTheDocument();
   });
 
   test('fills inputs and submits the form', () => {
@@ -36,7 +37,7 @@ describe('MovieForm', () => {
         userEvent.type(screen.getByLabelText(/Runtime:/i), '120 mins');
         userEvent.type(screen.getByLabelText(/Overview:/i), 'Test overview for the movie.');
     
-        userEvent.click(screen.getByText(/Submit/));
+        userEvent.click(screen.getByText(/Add/));
     });
 
 
