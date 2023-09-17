@@ -1,69 +1,43 @@
 /* eslint-disable testing-library/no-unnecessary-act */
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, fireEvent, screen, act} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom/extend-expect';
 
 import SortControl from './SortControl';  // Путь до вашего файла компонента
 
 describe('SortControl', () => {
-    test('renders list of sorting items', () => {
-        render(<SortControl onSelect={jest.fn()} />);
+    test('SortControl renders correctly and selects a sorting option', () => {
+        const onSelect = jest.fn();
+      
+        render(<SortControl onSelect={onSelect} />);
+      
+        expect(screen.getByText('Sort by:')).toBeInTheDocument();
+      
+        fireEvent.click(screen.getByText('Release Date'));
 
-        expect(screen.getByText('Release Date')).toBeInTheDocument();
+        expect(screen.getAllByText('Release Date')[0]).toBeInTheDocument();
         expect(screen.getByText('Title')).toBeInTheDocument();
-    });
+      
+        expect(screen.queryAllByText('Release Date')[1]).toHaveClass('dropdown-item-selected');
+        expect(screen.queryByText('Title')).not.toHaveClass('dropdown-item-selected');
+      
+        fireEvent.click(screen.getAllByText('Release Date')[1]);
+      
+        expect(onSelect).toHaveBeenCalledWith('Release Date');
+      
+        fireEvent.click(screen.getByText('Release Date'));
 
-    test('can select a sort by item and call onSelect', () => {
-        const mockOnSelect = jest.fn();
+        expect(screen.getAllByText('Release Date')[1]).toHaveClass('dropdown-item-selected');
+        expect(screen.queryByText('Title')).not.toHaveClass('dropdown-item-selected');
+      
+        fireEvent.click(screen.getByText('Title'));
+      
+        expect(onSelect).toHaveBeenCalledWith('Title');
+      
+        fireEvent.click(screen.getByText('Title'));
 
-        render(<SortControl onSelect={mockOnSelect} />);
-
-        const releaseDateItem = screen.getByText('Release Date');
-        act(() => {
-            userEvent.click(releaseDateItem);
-        });
-        
-
-        expect(releaseDateItem).toHaveClass('li-selected');
-        expect(mockOnSelect).toHaveBeenCalledWith('Release Date');
-    });
-
-    test('changes selected item upon multiple clicks', () => {
-        render(<SortControl onSelect={jest.fn()} />);
-
-        const releaseDateItem = screen.getByText('Release Date');
-        const titleItem = screen.getByText('Title');
-
-        act(() => {
-            userEvent.click(releaseDateItem);
-        });
-        expect(releaseDateItem).toHaveClass('li-selected');
-        expect(titleItem).not.toHaveClass('li-selected');
-
-        act(() => {
-            userEvent.click(titleItem);
-        });
-
-        expect(titleItem).toHaveClass('li-selected');
-        expect(releaseDateItem).not.toHaveClass('li-selected');
-    });
-
-    test('does not call onSelect if same item is clicked twice', () => {
-        const mockOnSelect = jest.fn();
-
-        render(<SortControl onSelect={mockOnSelect} />);
-
-        const releaseDateItem = screen.getByText('Release Date');
-
-        act(() => {
-            userEvent.click(releaseDateItem);
-        });
-        expect(mockOnSelect).toHaveBeenCalledTimes(1);
-
-        act(() => {
-            userEvent.click(releaseDateItem);
-        });
-        expect(mockOnSelect).toHaveBeenCalledTimes(1);
-    });
+        expect(screen.getAllByText('Release Date')[0]).not.toHaveClass('dropdown-item-selected');
+        expect(screen.getAllByText('Title')[1]).toHaveClass('dropdown-item-selected');
+      });
 });

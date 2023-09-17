@@ -57,6 +57,13 @@
     transition: background-color 0.2s;
 }
 
+.dropdown-item-selected {
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    background-color: #383838;
+}
+
 .dropdown-item:hover {
     background-color: #f7f7f7;
 }

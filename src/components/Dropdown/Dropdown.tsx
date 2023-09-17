@@ -46,7 +46,7 @@ function Dropdown({ options, onChange, initialOption }: DropdownProps) {
             {isOpen && (
                 <div className="dropdown-menu">
                     {options.map(option => (
-                        <div key={option} className="dropdown-item" onClick={() => handleOptionClick(option)}>
+                        <div key={option} className={selectedOption == option ? "dropdown-item-selected" : "dropdown-item"} onClick={() => handleOptionClick(option)}>
                             {option}
                         </div>
                     ))}
