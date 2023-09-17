@@ -6,12 +6,12 @@
 .longest-option {
     display: block;
     visibility: hidden;
-    height: 0;
+    height: 0px;
     overflow: hidden;
 }
 
 .dropdown-button, .longest-option {
-    padding: 10px 20px;
+    padding: 0px 10px;
     border: 1px solid #232323;
 }
 

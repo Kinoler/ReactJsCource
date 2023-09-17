@@ -10,7 +10,7 @@ describe('SortControl', () => {
     test('SortControl renders correctly and selects a sorting option', () => {
         const onSelect = jest.fn();
       
-        render(<SortControl onSelect={onSelect} />);
+        render(<SortControl sortByList={['Release Date', 'Title']}  onSelect={onSelect} />);
       
         expect(screen.getByText('Sort by:')).toBeInTheDocument();
       
