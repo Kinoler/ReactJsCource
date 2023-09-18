@@ -15,7 +15,7 @@ function MovieDetails({ movieDetails }: MovieDetailsProps) {
                 <h2>{movieDetails?.MovieName}</h2>
                 <p>Year: {movieDetails?.ReleaseYear}</p>
                 <p>Rate: {movieDetails?.Rating}</p>
-                <p>Duration: {movieDetails?.Duration?.toLocaleTimeString()}</p>
+                <p>Duration: {movieDetails?.Duration?.toLocaleTimeString("ru-RU", {hourCycle: 'h23'})}</p>
                 <p>{movieDetails?.Description}</p>
             </div>
         </div>

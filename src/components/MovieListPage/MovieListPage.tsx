@@ -2,7 +2,7 @@ import './MovieListPage.css';
 import axios from 'axios';
 
 import SearchForm from './../SearchForm/SearchForm';
-import {GetMovieDataAsync} from './../../api/api';
+import {getMovieDataAsync} from './../../api/api';
 import GenreSelect from './../GenreSelect/GenreSelect';
 import MovieTile from './../MovieTile/MovieTile';
 import MovieDetails from './../MovieDetails/MovieDetails';
@@ -11,8 +11,8 @@ import SortControl from './../SortControl/SortControl';
 import MovieDetailsModel from './../../models/MovieDetailsModel';
 import { useState, useEffect, useCallback } from 'react';
 
-const GenreList = ["All", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
-const SortByList = ["Release Date", "Title"];
+const genreList = ["All", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
+const sortByList = ["Release Date", "Title"];
 
 let source = axios.CancelToken.source();
 
@@ -20,14 +20,14 @@ function MovieListPage() {
     const [searchQuery, setSearchQuery] = useState<string>('');
 
     const [selectedMovie, setSelectedMovie] = useState<MovieDetailsModel>();
-    const [selectedGenre, setSelectedGenre] = useState<string>(GenreList[0]);
-    const [selectedSortBy, setSelectedSortBy] = useState<string>(SortByList[0]);
+    const [selectedGenre, setSelectedGenre] = useState<string>(genreList[0]);
+    const [selectedSortBy, setSelectedSortBy] = useState<string>(sortByList[0]);
 
     const [movieList, setMovieList] = useState<MovieDetailsModel[]>();
 
     const fetchMovies = useCallback(async () => {
         try {
-            const movies = await GetMovieDataAsync(selectedSortBy, searchQuery, selectedGenre, GenreList, source.token)
+            const movies = await getMovieDataAsync(selectedSortBy, searchQuery, selectedGenre, genreList, source.token)
             if(movies) {
                 setMovieList(movies);
             }
@@ -70,8 +70,8 @@ function MovieListPage() {
                 
                 <div className="MovieListPage-Content">
                     <div className="MovieListPage-Content-Config">
-                        <GenreSelect genreList={GenreList} selectedGenre={selectedGenre} onSelect={(genre) => setSelectedGenre(genre)} />
-                        <SortControl sortByList={SortByList} selectedSortBy={selectedSortBy} onSelect={(sortBy) => setSelectedSortBy(sortBy)} />
+                        <GenreSelect genreList={genreList} selectedGenre={selectedGenre} onSelect={(genre) => setSelectedGenre(genre)} />
+                        <SortControl sortByList={sortByList} selectedSortBy={selectedSortBy} onSelect={(sortBy) => setSelectedSortBy(sortBy)} />
                     </div>
                     <div className="MovieListPage-Content-ResultCount">
                         <p>Movies found: {movieList?.length ?? 0}</p>

@@ -17,7 +17,7 @@ interface MovieBackendModel {
     runtime: number;
 }
 
-async function GetMovieDataAsync(selectedSortBy: string, searchQuery: string, selectedGenre: string, GenreList: string[], cancelToken: CancelToken) {
+async function getMovieDataAsync(selectedSortBy: string, searchQuery: string, selectedGenre: string, genreList: string[], cancelToken: CancelToken) {
     const baseUrl = "http://localhost:4000";
     const path = "/movies";
     const response = await axios.get(path, { 
@@ -25,7 +25,7 @@ async function GetMovieDataAsync(selectedSortBy: string, searchQuery: string, se
         params: {
             sortBy: selectedSortBy.replace(" ", "_").toLowerCase(),
             search: searchQuery,
-            filter: selectedGenre !== GenreList[0] ? selectedGenre : "",
+            filter: selectedGenre !== genreList[0] ? selectedGenre : "",
             searchBy: "title",
             offset: 0,
             limit: 50, 
@@ -55,4 +55,4 @@ async function GetMovieDataAsync(selectedSortBy: string, searchQuery: string, se
     }
 }
 
-export {GetMovieDataAsync};
+export {getMovieDataAsync};
