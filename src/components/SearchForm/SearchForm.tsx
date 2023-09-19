@@ -21,7 +21,6 @@ function SearchForm({initialSearch, onSearch }: SearchFormProps) {
 
   return (
     <div className="div-searchForm">
-      <p>SearchForm: </p>
       <input
         type="text"
         value={search}

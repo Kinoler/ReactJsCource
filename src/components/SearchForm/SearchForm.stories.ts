@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import './../../styles.css';
 import SearchForm from './SearchForm';
 
 const meta = {

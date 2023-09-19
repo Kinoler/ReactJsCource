@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import './../../styles.css';
 import MovieDetails from './MovieDetails';
 import MovieDetailsModel from '../../models/MovieDetailsModel';
 

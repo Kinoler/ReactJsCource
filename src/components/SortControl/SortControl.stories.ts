@@ -18,6 +18,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
+    sortByList: ["Fantastic", "Horror", "Advanture"],
+    selectedSortBy: 'Advanture',
     onSelect: (val) => console.log(val)
   },
 };

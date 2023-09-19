@@ -5,9 +5,9 @@ import { useState, useEffect, useRef } from 'react';
 
 interface MovieTileProps {
   movieModel: MovieDetailsModel;
-  onClickCallback: (movieName: string) => void;
-  onEditClickCallback: (movieName: string) => void;
-  onDeleteClickCallback: (movieName: string) => void;
+  onClickCallback: (movieName: MovieDetailsModel) => void;
+  onEditClickCallback: (movieName: MovieDetailsModel) => void;
+  onDeleteClickCallback: (movieName: MovieDetailsModel) => void;
 }
 
 function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteClickCallback }: MovieTileProps) {
@@ -33,15 +33,15 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
     };
         
     const onClick = () => {
-        onClickCallback && onClickCallback(movieModel?.MovieName);
+        onClickCallback && onClickCallback(movieModel);
     };
 
     const handleEditClick = () => {
-        onEditClickCallback && onEditClickCallback(movieModel?.MovieName);
+        onEditClickCallback && onEditClickCallback(movieModel);
     };
 
     const handleDeleteClick = () => {
-        onDeleteClickCallback && onDeleteClickCallback(movieModel?.MovieName);
+        onDeleteClickCallback && onDeleteClickCallback(movieModel);
     };
     
     return (
@@ -53,10 +53,10 @@ function MovieTile({ movieModel, onClickCallback, onEditClickCallback, onDeleteC
                     <img src={movieModel?.ImageUrl} alt='Movie poster'/>
                 </div>
                 <div className="div-NameYear">
-                    <p>{movieModel?.MovieName}</p>
-                    <p className="p-Year">{movieModel?.ReleaseYear}</p>
+                    <p className='p-NameYear-Name'>{movieModel?.MovieName}</p>
+                    <p className="p-NameYear-Year">{movieModel?.ReleaseYear}</p>
                 </div>
-                <p>{movieModel?.Genres?.join(', ')}</p>
+                <p className="p-genres">{movieModel?.Genres?.join(', ')}</p>
             </div>
             <img src={DotsIcon} alt='Dots' className='div-MovieTile-dots' onClick={toggleContextMenu} />
             {isContextMenuOpen && (

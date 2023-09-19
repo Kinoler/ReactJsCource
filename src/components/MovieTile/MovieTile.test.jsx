@@ -38,7 +38,7 @@ test('Clicking on the movie triggers the onClickCallback', () => {
 
   fireEvent.click(screen.getByText(mockMovieModel.MovieName));
 
-  expect(onClickCallback).toHaveBeenCalledWith(mockMovieModel.MovieName);
+  expect(onClickCallback).toHaveBeenCalledWith(mockMovieModel);
 });
 
 test('Clicking on the dots icon opens the context menu', () => {
@@ -75,5 +75,5 @@ test('Clicking on Edit in the context menu triggers the onEditClickCallback', ()
   fireEvent.click(screen.getByAltText('Dots'));
   fireEvent.click(screen.getByText('Edit'));
 
-  expect(onEditClickCallback).toHaveBeenCalledWith(mockMovieModel.MovieName);
+  expect(onEditClickCallback).toHaveBeenCalledWith(mockMovieModel);
 });

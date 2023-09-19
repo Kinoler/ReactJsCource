@@ -22,10 +22,10 @@ function MovieForm({ onSubmit, movieEditModel }: MovieFormProps) {
   
     const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = event.target;
-      setMovieData({
-        ...movieData,
+      setMovieData(oldData => ({
+        ...oldData,
         [name]: value,
-      });
+      }));
     };
   
     const handleSubmit = (event: React.FormEvent) => {
