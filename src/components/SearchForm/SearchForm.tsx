@@ -21,15 +21,15 @@ function SearchForm({initialSearch, onSearch }: SearchFormProps) {
 
   return (
     <div className="div-searchForm">
-      <input
-        type="text"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-        onKeyUp={handleKeyPress}
-        placeholder="Введите текст"
-      />
-      <button onClick={onSearchClick}>Search</button>
-    </div>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          onKeyUp={handleKeyPress}
+          placeholder="Введите текст"
+        />
+        <button onClick={onSearchClick}>Search</button>
+    </div>      
   );
 };
 

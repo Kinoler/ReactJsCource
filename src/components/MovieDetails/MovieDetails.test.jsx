@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import MovieDetails from './MovieDetails';
+import { BrowserRouter } from 'react-router-dom'; 
 
 const mockMovieDetails = {
   ImageUrl: 'movie.jpg',
@@ -11,7 +12,9 @@ const mockMovieDetails = {
 };
 
 test('Renders MovieDetails component with correct data', () => {
-  render(<MovieDetails movieDetails={mockMovieDetails} />);
+  render(<BrowserRouter>
+  <MovieDetails movieDetails={mockMovieDetails} search='' />
+</BrowserRouter>);
 
   expect(screen.getByText('Sample Movie')).toBeInTheDocument();
   expect(screen.getByText('Year: 2022')).toBeInTheDocument();
@@ -21,7 +24,9 @@ test('Renders MovieDetails component with correct data', () => {
 });
 
 test('Renders movie image with correct src and alt text', () => {
-  render(<MovieDetails movieDetails={mockMovieDetails} />);
+  render(<BrowserRouter>
+  <MovieDetails movieDetails={mockMovieDetails} search='' />
+</BrowserRouter>);
 
   const movieImage = screen.getByAltText('Load error');
   expect(movieImage).toBeInTheDocument();
@@ -31,7 +36,9 @@ test('Renders movie image with correct src and alt text', () => {
 test('Handles missing description gracefully', () => {
   const movieDetailsWithoutDescription = { ...mockMovieDetails, Description: undefined };
 
-  render(<MovieDetails movieDetails={movieDetailsWithoutDescription} />);
+  render(<BrowserRouter>
+  <MovieDetails movieDetails={movieDetailsWithoutDescription} search='' />
+</BrowserRouter>);
 
   expect(screen.queryByText('A great movie description.')).not.toBeInTheDocument();
 });

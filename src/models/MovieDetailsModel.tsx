@@ -1,5 +1,6 @@
 class MovieDetailsModel {
     constructor(
+        public Id: number,
         public ImageUrl: string,
         public MovieName: string,
         public ReleaseYear: number,

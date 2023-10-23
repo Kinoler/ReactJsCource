@@ -17,10 +17,11 @@ interface MovieBackendModel {
     runtime: number;
 }
 
+const baseUrl = "http://localhost:4000";
+const moviesPath = "/movies";
+
 async function getMovieDataAsync(selectedSortBy: string, searchQuery: string, selectedGenre: string, genreList: string[], cancelToken: CancelToken) {
-    const baseUrl = "http://localhost:4000";
-    const path = "/movies";
-    const response = await axios.get(path, { 
+    const response = await axios.get(moviesPath, { 
         baseURL: baseUrl,
         params: {
             sortBy: selectedSortBy.replace(" ", "_").toLowerCase(),
@@ -39,20 +40,39 @@ async function getMovieDataAsync(selectedSortBy: string, searchQuery: string, se
 
     if(response.status === 200){
         const moviesJson = response.data.data;
-        const movies = moviesJson.map((movieJson: MovieBackendModel) => {
-            return new MovieDetailsModel(
-                movieJson.poster_path, 
-                movieJson.title,
-                new Date(movieJson.release_date).getFullYear(),
-                movieJson.vote_average,
-                new Date(new Date().setMinutes(movieJson.runtime)),
-                movieJson.overview,
-                movieJson.genres
-            )
-        });
-
+        const movies = moviesJson.map((movieJson: MovieBackendModel) => parseBackendModel(movieJson));
         return movies;
     }
 }
 
-export {getMovieDataAsync};
+async function getMovieByIdAsync(id: number): Promise<MovieDetailsModel | undefined> {
+    const response = await axios.get(`${moviesPath}/${id}`, { 
+        baseURL: baseUrl,
+        params: {
+            id: id
+        },
+        paramsSerializer: params => {
+            return qs.stringify(params)
+        }
+    });
+
+    if(response.status === 200){
+        const movieJson = response.data;
+        return parseBackendModel(movieJson);
+    }
+}
+
+function parseBackendModel(movieJson: MovieBackendModel): MovieDetailsModel{
+    return new MovieDetailsModel(
+        movieJson.id,
+        movieJson.poster_path, 
+        movieJson.title,
+        new Date(movieJson.release_date).getFullYear(),
+        movieJson.vote_average,
+        new Date(new Date().setMinutes(movieJson.runtime)),
+        movieJson.overview,
+        movieJson.genres
+    )
+}
+
+export {getMovieDataAsync, getMovieByIdAsync};

@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import MovieTile from './MovieTile';
+import { BrowserRouter } from 'react-router-dom'; 
 
 const mockMovieModel = {
   MovieName: 'Movie 1',
@@ -10,12 +11,13 @@ const mockMovieModel = {
 
 test('Component renders with movie details', () => {
   render(
+    <BrowserRouter>
     <MovieTile
       movieModel={mockMovieModel}
-      onClickCallback={() => {}}
       onEditClickCallback={() => {}}
       onDeleteClickCallback={() => {}}
     />
+    </BrowserRouter>
   );
 
   expect(screen.getByText(mockMovieModel.MovieName)).toBeInTheDocument();
@@ -24,31 +26,15 @@ test('Component renders with movie details', () => {
   expect(screen.getByAltText('Movie poster')).toBeInTheDocument();
 });
 
-test('Clicking on the movie triggers the onClickCallback', () => {
-  const onClickCallback = jest.fn();
-
-  render(
-    <MovieTile
-      movieModel={mockMovieModel}
-      onClickCallback={onClickCallback}
-      onEditClickCallback={() => {}}
-      onDeleteClickCallback={() => {}}
-    />
-  );
-
-  fireEvent.click(screen.getByText(mockMovieModel.MovieName));
-
-  expect(onClickCallback).toHaveBeenCalledWith(mockMovieModel);
-});
-
 test('Clicking on the dots icon opens the context menu', () => {
   render(
+    <BrowserRouter>
     <MovieTile
       movieModel={mockMovieModel}
-      onClickCallback={() => {}}
       onEditClickCallback={() => {}}
       onDeleteClickCallback={() => {}}
     />
+    </BrowserRouter>
   );
 
   expect(screen.queryByText('Edit')).not.toBeInTheDocument();
@@ -64,12 +50,13 @@ test('Clicking on Edit in the context menu triggers the onEditClickCallback', ()
 
 
   render(
+    <BrowserRouter>
     <MovieTile
       movieModel={mockMovieModel}
-      onClickCallback={() => {}}
       onEditClickCallback={onEditClickCallback}
       onDeleteClickCallback={() => {}}
     />
+    </BrowserRouter>
   );
 
   fireEvent.click(screen.getByAltText('Dots'));

@@ -1,15 +1,15 @@
 import './MovieListPage.css';
 import axios from 'axios';
 
-import SearchForm from './../SearchForm/SearchForm';
 import {getMovieDataAsync} from './../../api/api';
 import GenreSelect from './../GenreSelect/GenreSelect';
-import MovieTile from './../MovieTile/MovieTile';
-import MovieDetails from './../MovieDetails/MovieDetails';
+import MovieTileRouter from './../Routers/MovieTileRouter';
 import SortControl from './../SortControl/SortControl';
 
 import MovieDetailsModel from './../../models/MovieDetailsModel';
 import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
 
 const genreList = ["All", "DOCUMENTARY", "COMEDY", "HORROR", "CRIME"];
 const sortByList = ["Release Date", "Title"];
@@ -17,11 +17,21 @@ const sortByList = ["Release Date", "Title"];
 let source = axios.CancelToken.source();
 
 function MovieListPage() {
-    const [searchQuery, setSearchQuery] = useState<string>('');
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const [selectedMovie, setSelectedMovie] = useState<MovieDetailsModel>();
-    const [selectedGenre, setSelectedGenre] = useState<string>(genreList[0]);
-    const [selectedSortBy, setSelectedSortBy] = useState<string>(sortByList[0]);
+    const searchQuery = searchParams.get('query') || '';
+
+    const selectedGenre = genreList.find(el => el.toLowerCase() === searchParams.get('genre')?.toLowerCase()) || genreList[0];
+    const setSelectedGenre = (genre: string) => {
+        searchParams.set('genre', genre);
+        setSearchParams(searchParams);
+    };
+    
+    const selectedSortBy = sortByList.find(el => el.toLowerCase() === searchParams.get('sortBy')?.toLowerCase()) || sortByList[0];
+    const setSelectedSortBy = (sortBy: string) => {
+        searchParams.set('sortBy', sortBy);
+        setSearchParams(searchParams);
+    };
 
     const [movieList, setMovieList] = useState<MovieDetailsModel[]>();
 
@@ -46,26 +56,7 @@ function MovieListPage() {
         <div className="MovieListPage-Wrapper">
             <div className="MovieListPage-Container">
                 <div className="MovieListPage-Header">
-                    {selectedMovie ? 
-                        <div className="MovieListPage-Header-Details">
-                            <div className='CloseButton-Container'>
-                                <button className="CloseButton" onClick={() => setSelectedMovie(undefined)}>X</button>
-                            </div>
-                            <div className='MovieListPage-Header-Details-Container'>
-                                <MovieDetails movieDetails={selectedMovie} />
-                            </div>
-                        </div> 
-                        :
-                        <div className="MovieListPage-Header-SearchForm">
-                            <div className='AddMovieButton-Container'>
-                                <button className="AddMovieButton">Add movie</button>
-                            </div>
-                            <div className='SearchForm-Container'>
-                                <p className="SearchForm-Lable">FIND YOUR MOVIE</p>
-                                <SearchForm initialSearch={searchQuery} onSearch={(searchValue) => setSearchQuery(searchValue)}/>
-                            </div>
-                        </div> 
-                    }
+                    <Outlet />
                 </div>
                 
                 <div className="MovieListPage-Content">
@@ -79,8 +70,7 @@ function MovieListPage() {
                     <div className="MovieListPage-Content-List">
                         {movieList && movieList.map(movie => movie && (
                             <div key={movie.MovieName} className="MovieListPage-Content-ListItem">
-                                <MovieTile movieModel={movie} 
-                                    onClickCallback={(movieDetails) => setSelectedMovie(movieDetails)}
+                                <MovieTileRouter movieModel={movie} 
                                     onEditClickCallback={(val) => console.log(val)}
                                     onDeleteClickCallback={(val) => console.log(val)}
                                 />

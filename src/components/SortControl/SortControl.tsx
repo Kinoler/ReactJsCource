@@ -1,6 +1,5 @@
 import Dropdown from '../Dropdown/Dropdown';
 import './SortControl.css';
-import { useState } from 'react';
 
 interface SortControlProps {
   onSelect: (sortByItem: string) => void;
