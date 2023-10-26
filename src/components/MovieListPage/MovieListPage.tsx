@@ -6,7 +6,7 @@ import GenreSelect from './../GenreSelect/GenreSelect';
 import MovieTileRouter from './../Routers/MovieTileRouter';
 import SortControl from './../SortControl/SortControl';
 
-import MovieDetailsModel from './../../models/MovieDetailsModel';
+import MovieDetailsModel from '../../models/MovieBackendModel';
 import { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Outlet } from "react-router-dom";
@@ -69,11 +69,8 @@ function MovieListPage() {
                     </div>
                     <div className="MovieListPage-Content-List">
                         {movieList && movieList.map(movie => movie && (
-                            <div key={movie.MovieName} className="MovieListPage-Content-ListItem">
-                                <MovieTileRouter movieModel={movie} 
-                                    onEditClickCallback={(val) => console.log(val)}
-                                    onDeleteClickCallback={(val) => console.log(val)}
-                                />
+                            <div key={movie.title} className="MovieListPage-Content-ListItem">
+                                <MovieTileRouter movieModel={movie} />
                             </div>
                         ))}
                     </div>
