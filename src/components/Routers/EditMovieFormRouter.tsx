@@ -1,14 +1,14 @@
 import MovieDetailsModel from '../../models/MovieBackendModel';
-import MovieDetails from '../MovieDetails/MovieDetails';
 import { useLocation, useLoaderData } from "react-router-dom";
+import EditMovieForm from '../MovieForm/EditMovieForm';
 
-function MovieDetailsRouter() {
+function EditMovieFormRouter() {
     const { search } = useLocation();
     const { movieDetails } = useLoaderData() as { movieDetails: MovieDetailsModel };
 
     return (
-        <MovieDetails movieDetails={movieDetails} search={search} />
+        <EditMovieForm movieEditModel={movieDetails} />
     );
 };
 
-export default MovieDetailsRouter;
+export default EditMovieFormRouter;

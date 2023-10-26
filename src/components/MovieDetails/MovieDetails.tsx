@@ -1,5 +1,5 @@
 import './MovieDetails.css';
-import MovieDetailsModel from '../../models/MovieDetailsModel';
+import MovieDetailsModel from '../../models/MovieBackendModel';
 import { Link } from "react-router-dom";
 
 interface MovieDetailsProps {
@@ -18,14 +18,14 @@ function MovieDetails({movieDetails, search}: MovieDetailsProps) {
             <div className='MovieListPage-Header-Details-Container'>
                 <div className="div-MovieDetails-container">
                     <div className="div-MovieDetails-image">
-                        <img src={movieDetails?.ImageUrl} alt='Load error' />
+                        <img src={movieDetails?.poster_path} alt='Load error' />
                     </div>
                     <div className="div-MovieDetails-info">
-                        <h2>{movieDetails?.MovieName}</h2>
-                        <p>Year: {movieDetails?.ReleaseYear}</p>
-                        <p>Rate: {movieDetails?.Rating}</p>
-                        <p>Duration: {movieDetails?.Duration?.toLocaleTimeString("ru-RU", {hourCycle: 'h23'})}</p>
-                        <p>{movieDetails?.Description}</p>
+                        <h2>{movieDetails?.title}</h2>
+                        <p>Year: {new Date(movieDetails?.release_date).getFullYear()}</p>
+                        <p>Rate: {movieDetails?.vote_average}</p>
+                        <p>Duration: {movieDetails?.runtime} min</p>
+                        <p>{movieDetails?.overview}</p>
                     </div>
                 </div>
             </div>
