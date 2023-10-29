@@ -4,7 +4,7 @@ import './styles.css';
 import MovieListPage from './components/MovieListPage/MovieListPage';
 import MovieDetailsRouter from './components/Routers/MovieDetailsRouter';
 import { createBrowserRouter, LoaderFunctionArgs, RouterProvider } from "react-router-dom";
-import { getMovieByIdAsync } from './api/api';
+import { getMovieByIdAsync } from '../app/api/api';
 import MovieListPageHeader from './components/MovieListPage/MovieListPageHeader';
 import AddMovieForm from './components/MovieForm/AddMovieForm';
 import EditMovieFormRouter from './components/Routers/EditMovieFormRouter';
