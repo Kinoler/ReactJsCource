@@ -15,15 +15,16 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
-const genreList = ["All", "DOCUMENTARY", "COMEDY", "FANTASY", "CRIME"];
-const sortByList = ["Release Date", "Title"];
+export const genreList = ["All", "DOCUMENTARY", "COMEDY", "FANTASY", "CRIME"];
+export const sortByList = ["Release Date", "Title"];
 
-export const loader: LoaderFunction = async ({ params }) => {
-  const searchQuery = params.query || '';
-  const selectedGenre = genreList.find(el => el.toLowerCase() === params.genre?.toLowerCase()) || genreList[0];
-  const selectedSortBy = sortByList.find(el => el.toLowerCase() === params.sortBy?.toLowerCase()) || sortByList[0];
+export const loader: LoaderFunction = async ({ request }) => {
+  const queryParams = new URL(request.url).searchParams;
+  const searchQuery = queryParams.get('query') || '';
+  const selectedGenre = genreList.find(el => el.toLowerCase() === queryParams.get('genre')?.toLowerCase()) || genreList[0];
+  const selectedSortBy = sortByList.find(el => el.toLowerCase() === queryParams.get('sortBy')?.toLowerCase()) || sortByList[0];
   const movieList = await getMovieDataAsync(selectedSortBy, searchQuery, selectedGenre, genreList, undefined);
-  return { movieList };
+  return { movieList, selectedGenre, selectedSortBy };
 };
 
 export default function App() {

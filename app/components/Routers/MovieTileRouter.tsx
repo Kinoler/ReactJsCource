@@ -1,4 +1,4 @@
-import MovieDetailsModel from '../../../app/models/MovieBackendModel';
+import type MovieDetailsModel from '../../../app/models/MovieBackendModel';
 import { useLocation } from "react-router-dom";
 import MovieTile from '../MovieTile/MovieTile';
 
@@ -12,6 +12,6 @@ function MovieTileRouter({ movieModel }: MovieTileRouterProps) {
     return (
         <MovieTile movieModel={movieModel} search={search}/>
     );
-};
+}
 
 export default MovieTileRouter;

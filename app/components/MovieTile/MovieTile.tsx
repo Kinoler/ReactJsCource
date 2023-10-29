@@ -1,8 +1,8 @@
 import './MovieTile.css';
-import MovieDetailsModel from '../../../app/models/MovieBackendModel';
+import type MovieDetailsModel from '../../../app/models/MovieBackendModel';
 import DotsIcon from './../../resources/DotsIcon.png';
 import { useState, useEffect, useRef } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from "@remix-run/react";
 
 interface MovieTileProps {
   movieModel: MovieDetailsModel;
@@ -64,6 +64,6 @@ function MovieTile({ movieModel, search }: MovieTileProps) {
             <div />
         )
     );
-};
+}
 
 export default MovieTile;

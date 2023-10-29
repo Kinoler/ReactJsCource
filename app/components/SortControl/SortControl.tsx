@@ -20,6 +20,6 @@ function SortControl({ sortByList, selectedSortBy, onSelect}: SortControlProps) 
         <Dropdown options={sortByList} initialOption={selectedSortBy} onChange={(newValue) => handleChange(newValue)} />
         </div>
     );
-};
+}
 
 export default SortControl;

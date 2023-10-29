@@ -5,10 +5,7 @@ import SortControl from './../SortControl/SortControl';
 
 import type MovieDetailsModel from '../../../app/models/MovieBackendModel';
 import { useSearchParams , Outlet, useLoaderData } from "@remix-run/react";
-
-
-const genreList = ["All", "DOCUMENTARY", "COMEDY", "FANTASY", "CRIME"];
-const sortByList = ["Release Date", "Title"];
+import { genreList, sortByList } from '~/root';
 
 function MovieListPage() {
     const [searchParams, setSearchParams] = useSearchParams();

@@ -1,4 +1,4 @@
-import { useSearchParams, Link, Outlet } from 'react-router-dom';
+import { useSearchParams, Link, Outlet } from "@remix-run/react";
 import SearchForm from './../SearchForm/SearchForm';
 
 function MovieListPageHeader() {
